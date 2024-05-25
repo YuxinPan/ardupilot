@@ -204,6 +204,7 @@ private:
     AP_OSD_Setting esc_temp {false, 24, 13};
     AP_OSD_Setting esc_rpm{false, 22, 12};
     AP_OSD_Setting esc_amps{false, 24, 14};
+    AP_Int8 osd_esc_index;
 #endif
     AP_OSD_Setting gps_latitude{true, 9, 13};
     AP_OSD_Setting gps_longitude{true, 9, 14};

@@ -2003,19 +2003,18 @@ void AP_OSD_Screen::draw_vspeed(uint8_t x, uint8_t y)
 void AP_OSD_Screen::draw_esc_temp(uint8_t x, uint8_t y)
 {
     int16_t etemp;
-    // first parameter is index into array of ESC's.  Hardwire to zero (first) for now.
-    if (!AP::esc_telem().get_temperature(0, etemp)) {
+    uint8_t esc_index = (uint8_t)AP_OSD_Screen::osd_esc_index.get() - 1;
+    if (!AP::esc_telem().get_temperature(esc_index, etemp)) {
         return;
     }
-
     backend->write(x, y, false, "%3d%c", (int)u_scale(TEMPERATURE, etemp / 100), u_icon(TEMPERATURE));
 }
 
 void AP_OSD_Screen::draw_esc_rpm(uint8_t x, uint8_t y)
 {
     float rpm;
-    // first parameter is index into array of ESC's.  Hardwire to zero (first) for now.
-    if (!AP::esc_telem().get_rpm(0, rpm)) {
+    uint8_t esc_index = (uint8_t)AP_OSD_Screen::osd_esc_index.get() - 1;
+    if (!AP::esc_telem().get_rpm(esc_index, rpm)) {
         return;
     }
     float krpm = rpm * 0.001f;
@@ -2026,8 +2025,8 @@ void AP_OSD_Screen::draw_esc_rpm(uint8_t x, uint8_t y)
 void AP_OSD_Screen::draw_esc_amps(uint8_t x, uint8_t y)
 {
     float amps;
-    // first parameter is index into array of ESC's.  Hardwire to zero (first) for now.
-    if (!AP::esc_telem().get_current(0, amps)) {
+    uint8_t esc_index = (uint8_t)AP_OSD_Screen::osd_esc_index.get() - 1;
+    if (!AP::esc_telem().get_current(esc_index, amps)) {
         return;
     }
     backend->write(x, y, false, "%4.1f%c", amps, SYMBOL(SYM_AMP));

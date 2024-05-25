@@ -733,6 +733,16 @@ const AP_Param::Info Plane::var_info[] = {
     // @User: Advanced
     ASCALAR(crash_detection_enable,         "CRASH_DETECT",   0),
 
+#if HAL_WITH_ESC_TELEM
+    // @Param: OSD_ESC_INDEX
+    // @DisplayName: ESC number OSD
+    // @Description: The number of ESC info (RPM,temperature,current) to display in OSD.
+    // @Range: 1 12
+    // @Increment: 1
+    // @User: Advanced
+    GSCALAR(osd_esc_index, "OSD_ESC_INDEX", 0), 
+#endif
+
     // @Group: BARO
     // @Path: ../libraries/AP_Baro/AP_Baro.cpp
     GOBJECT(barometer, "BARO", AP_Baro),

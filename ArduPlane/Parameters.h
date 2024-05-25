@@ -356,6 +356,8 @@ public:
         k_param_acro_yaw_rate,
         k_param_takeoff_throttle_max_t,
         k_param_autotune_options,
+
+        k_param_osd_esc_index,
     };
 
     AP_Int16 format_version;
@@ -466,6 +468,10 @@ public:
     AP_Int8 override_channel;
 #endif
     AP_Int16 gcs_pid_mask;
+#if HAL_WITH_ESC_TELEM
+    AP_Int8 osd_esc_index;
+#endif
+
 };
 
 /*
